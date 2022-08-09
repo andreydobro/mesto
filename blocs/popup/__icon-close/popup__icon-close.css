@@ -1,0 +1,11 @@
+.popup__icon-close {
+    position: absolute;
+    top: 155px;
+    left: 863px;
+    width: 32px;
+    height: 32px;
+}
+
+.popup__icon-close:hover {
+     opacity: 0.6;
+}
