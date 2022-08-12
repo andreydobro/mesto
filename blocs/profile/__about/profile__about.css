@@ -6,4 +6,16 @@
     color: #fff;
     margin: 0;
     padding: 16px 0 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@media screen and (max-width: 320px) {
+    .profile__about {
+        font-size: 14px;
+        line-height: 17px;
+        text-align: center;
+        width: 282px;
+    }
 }

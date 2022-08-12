@@ -5,3 +5,7 @@
     width: 22px;
     height: 19px;
 }
+
+.element__heart:hover {
+    opacity: 0.5;
+}

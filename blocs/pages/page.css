@@ -1,5 +1,6 @@
 .page {
-    max-width: 880px;
+    width: 880px;
+    max-width: 100%;
     min-width: 320px;
     margin: 0 auto;
 }
