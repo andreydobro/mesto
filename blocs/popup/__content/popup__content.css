@@ -7,8 +7,8 @@
     border-radius: 10px;
     padding: 34px 36px 37px;
     box-sizing: border-box;
-    position: relative;
     margin: 195px 0 0;
+    position: relative;
 }
 
 .popup__content:nth-last-child(2) {
@@ -18,7 +18,7 @@
 @media screen and (max-width: 320px) {
     .popup__content {
         min-width: 282px;
-        min-height: 322px;
+        height: 322px;
         padding: 25px 22px;
         margin: 123px 0 0;
     }

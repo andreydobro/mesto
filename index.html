@@ -13,7 +13,6 @@
     <div class="page">
         <header class="header">
             <div class="header__logo"></div>
-            <div class="header__line"></div>
         </header>
         <main>
             <section class="profile">
@@ -21,43 +20,43 @@
                     <img src="./images/avatar.jpg" class="profile__avatar" alt="фото пользователя">
                     <div class="profile__info">
                         <h1 class="profile__name">Жак-Ив Кусто</h1>
-                        <button class="profile__edit-button profile__edit-button_opened"></button>
+                        <button class="profile__edit-button profile__edit-button_opened" type="submit"></button>
                         <p class="profile__about">Исследователь океана</p>
                     </div>
                 </div>
-                <button class="profile__add-button"></button>
+                <button class="profile__add-button" type="submit"></button>
             </section>
             <section class="elements">
                 <div class="element">
                     <img class="element__foto" src="./images/kirill-pershin-1088404-unsplash-1.jpg" alt="Карачаевск">
                     <h2 class="element__title">Карачаевск</h2>
-                    <img class="element__heart" src="./icons/Vector.svg" alt="лайк">
+                    <button class="element__heart" type="submit"></button>
                 </div>
                 <div class="element">
                     <img class="element__foto" src="./images/Эльбрус.jpg" alt="Эльбрус">
                     <h2 class="element__title">Гора Эльбрус</h2>
-                    <img class="element__heart" src="./icons/Vector.svg" alt="лайк">
+                    <button class="element__heart" type="submit"></button>
                 </div>
                 <div class="element">
                     <img class="element__foto" src="./images/домбай.jpg" alt="Домбай">
                     <h2 class="element__title">Домбай</h2>
-                    <img class="element__heart" src="./icons/Vector.svg" alt="лайк">
+                    <button class="element__heart" type="submit"></button>
                 </div>
                 <div class="element">
                     <img class="element__foto" src="./images/Эльбрус.jpg" alt="Эльбрус">
                     <h2 class="element__title">Гора Эльбрус</h2>
-                    <img class="element__heart" src="./icons/Vector.svg" alt="лайк">
+                    <button class="element__heart" type="submit"></button>
                 </div>
                 <div class="element">
                     <img class="element__foto" src="./images/домбай.jpg" alt="домбай">
                     <h2 class="element__title">Домбай</h2>
-                    <img class="element__heart" src="./icons/Vector.svg" alt="лайк">
+                    <button class="element__heart" type="submit"></button>
                 </div>
                 <div class="element">
                     <img class="element__foto" src="./images/kirill-pershin-1088404-unsplash-1.jpg"
                         alt="Карачаево-Черкесия">
                     <h2 class="element__title">Карачаево-Черкеесия</h2>
-                    <img class="element__heart" src="./icons/Vector.svg" alt="лайк">
+                    <button class="element__heart" type="submit"></button>
                 </div>
             </section>
         </main>
@@ -68,16 +67,16 @@
     </div>
     <section class="popup">
         <div class="popup__content">
-            <img src="./icons/Close-Icon.svg" alt="крестик" class="popup__icon-close">
             <h2 class="popup__title">Редактировать профиль</h2>
-            <form class="popup__form">
-                <input class="popup__input_name popup__input" value="" name="name" type="text">
-                <input class="popup__input_about popup__input" value="" name="about" type="text">
-                <button onclick="" class="popup__bottom-save" type="submit">Сохранить</button>
+            <form class="popup__form" name="name about">
+                <button class="popup__icon-close" type="submit"></button>
+                <input class="popup__input_name_edit popup__input" value="" name="name" type="text">
+                <input class="popup__input_about_edit popup__input" value="" name="about" type="text">
+                <button class="popup__bottom-save" type="submit">Сохранить</button>
             </form>
         </div>
     </section>
-    <script src="./script.js"></script>
+    <script src="./index.js"></script>
 </body>
 
 </html>
