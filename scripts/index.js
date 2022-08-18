@@ -18,8 +18,7 @@ let closePopup = function () {
     popup.classList.remove('popup_opened');
 }
 
-nameInput.setAttribute('value', profileName.textContent);
-aboutInput.setAttribute('value', profileAbout.textContent);
+
 
 
 function formSubmitHandler(evt) {
@@ -32,4 +31,3 @@ function formSubmitHandler(evt) {
 popupForm.addEventListener('submit', formSubmitHandler);
 openButton.addEventListener('click', openPopup);
 closeButtton.addEventListener('click', closePopup);
-saveButton.addEventListener('click', closePopup);

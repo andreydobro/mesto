@@ -5,14 +5,22 @@
     background-size: 32px;
     border: 0;
     position: absolute;
-    top: -44px;
-    right: -45px;
+    top: -40px;
+    right: -39px;
     width: 32px;
     height: 32px;
+    padding: 0;
 }
 
 .popup__icon-close:hover {
     opacity: 0.6;
+}
+
+@media screen and (max-width: 540px) {
+    .popup__icon-close {
+        top: -50px;
+        right: 0px;
+    }
 }
 
 @media screen and (max-width: 320px) {

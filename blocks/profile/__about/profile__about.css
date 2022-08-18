@@ -11,11 +11,22 @@
     white-space: nowrap;
 }
 
+@media screen and (max-width: 530px) {
+    .profile__about {
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .profile__about {
+        font-size: 16px;
+    }
+}
+
 @media screen and (max-width: 320px) {
     .profile__about {
         font-size: 14px;
         line-height: 17px;
-        text-align: center;
         width: 282px;
         padding: 0;
     }

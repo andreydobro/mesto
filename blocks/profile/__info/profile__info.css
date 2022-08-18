@@ -6,10 +6,22 @@
     justify-content: space-between;
 }
 
+@media screen and (max-width: 530px) {
+    .profile__info {
+        margin: 20px 0 0;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .profile__info {
+        width: 290px;
+    }
+}
+
 @media screen and (max-width: 320px) {
     .profile__info {
         width: 282px;
-        margin: 26px 0 0;
+        margin: 25px 0 0;
         justify-content: center;
     }
 }
