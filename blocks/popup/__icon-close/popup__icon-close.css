@@ -10,6 +10,7 @@
     width: 32px;
     height: 32px;
     padding: 0;
+    cursor: pointer;
 }
 
 .popup__icon-close:hover {
