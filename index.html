@@ -24,41 +24,11 @@
                         <p class="profile__about">Исследователь океана</p>
                     </div>
                 </div>
-                <button class="profile__add-button" type="button"></button>
+                <button class="profile__add-button profile__add-button_opened" type="button"></button>
             </section>
-            <section class="elements">
-                <div class="element">
-                    <img class="element__foto" src="./images/kirill-pershin-1088404-unsplash-1.jpg" alt="Карачаевск">
-                    <h2 class="element__title">Карачаевск</h2>
-                    <button class="element__heart" type="button"></button>
-                </div>
-                <div class="element">
-                    <img class="element__foto" src="./images/Эльбрус.jpg" alt="Эльбрус">
-                    <h2 class="element__title">Гора Эльбрус</h2>
-                    <button class="element__heart" type="button"></button>
-                </div>
-                <div class="element">
-                    <img class="element__foto" src="./images/kirill-pershin-1556355-unsplash-1.jpg" alt="Домбай">
-                    <h2 class="element__title">Домбай</h2>
-                    <button class="element__heart" type="button"></button>
-                </div>
-                <div class="element">
-                    <img class="element__foto" src="./images/Эльбрус.jpg" alt="Эльбрус">
-                    <h2 class="element__title">Гора Эльбрус</h2>
-                    <button class="element__heart" type="button"></button>
-                </div>
-                <div class="element">
-                    <img class="element__foto" src="./images/kirill-pershin-1556355-unsplash-1.jpg" alt="домбай">
-                    <h2 class="element__title">Домбай</h2>
-                    <button class="element__heart" type="button"></button>
-                </div>
-                <div class="element">
-                    <img class="element__foto" src="./images/kirill-pershin-1088404-unsplash-1.jpg"
-                        alt="Карачаево-Черкесия">
-                    <h2 class="element__title">Карачаево-Черкеесия</h2>
-                    <button class="element__heart" type="button"></button>
-                </div>
-            </section>
+            <ul class="elements">
+
+            </ul>
         </main>
         <footer class="footer">
             <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
@@ -76,7 +46,34 @@
             </form>
         </div>
     </section>
-    <script src="./scripts/index.js"></script>
+    <section class="popup popup-add_opened">
+        <div class="popup__content">
+            <h2 class="popup__title">Новое место</h2>
+            <button class="popup__icon-close" type="button"></button>
+            <form class="popup__form popup__form-add" name="name about">
+                <input class="popup__input_name_add popup__input" value="" name="name" type="text">
+                <input class="popup__input_about_add popup__input" value="" name="about" type="text">
+                <button class="popup__bottom-save" type="submit">Создать</button>
+            </form>
+        </div>
+    </section>
+    <section class="images-popup">
+        <div class="images-popup__content">
+            <button class="popup__icon-close" type="button"></button>
+                <img class="imeges-popup__foto" src="./images/kirill-pershin-1088404-unsplash-1.jpg">
+            <p class="photo-grid__title">Карачаеыо Черкесия</p>
+        </div>
+    </section>
+    <template class="cart__template">
+        <li class="element">
+            <button class="element__back" tupe="button"></button>
+            <img class="element__foto" src="" alt="">
+            <h2 class="element__title">Карачаевск</h2>
+            <button class="element__heart" type="button"></button>
+        </li>
+    </template>
+</body>
+<script src="./scripts/index.js"></script>
 </body>
 
 </html>
