@@ -46,22 +46,22 @@
             </form>
         </div>
     </section>
-    <section class="popup popup-add_opened">
+    <section class="popup popup-add">
         <div class="popup__content">
             <h2 class="popup__title">Новое место</h2>
-            <button class="popup__icon-close" type="button"></button>
+            <button class="popup__icon-close popup__icon-close_add" type="button"></button>
             <form class="popup__form popup__form-add" name="name about">
-                <input class="popup__input_name_add popup__input" value="" name="name" type="text">
-                <input class="popup__input_about_add popup__input" value="" name="about" type="text">
+                <input class="popup__input_name_add popup__input popup__input_name_edit" value="" name="name" type="text" placeholder="Название">
+                <input class="popup__input_about_add popup__input" value="" name="about" type="text" placeholder="Ссылка на картинку">
                 <button class="popup__bottom-save" type="submit">Создать</button>
             </form>
         </div>
     </section>
-    <section class="images-popup">
-        <div class="images-popup__content">
-            <button class="popup__icon-close" type="button"></button>
-                <img class="imeges-popup__foto" src="./images/kirill-pershin-1088404-unsplash-1.jpg">
-            <p class="photo-grid__title">Карачаеыо Черкесия</p>
+    <section class="popup popup__image">
+        <div class="popup__content-image">
+            <button class="popup__icon-close popup__icon-close_image" type="button"></button>
+                <img class="popup__image-foto" src="" alt="">
+                <h2 class="popup__name-image"></h2>
         </div>
     </section>
     <template class="cart__template">
