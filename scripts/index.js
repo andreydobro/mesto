@@ -45,7 +45,7 @@ let inputLink = document.querySelector('.popup__input_about_add');
 let formAdd = document.querySelector('.popup__form-add');
 let buttonCloseImage = document.querySelector('.popup__icon-close_image');
 let elementFoto = document.querySelector('.element__foto');
-let imagePopup = document.querySelector('.popup-image');
+let imagePopup = document.querySelector('.popup__image');
 let imageFoto = document.querySelector('.popup__image-foto');
 let imageName = document.querySelector('.popup__name-image');
 let buttonCloseAdd = document.querySelector('.popup__icon-close_add');
@@ -90,7 +90,7 @@ function formSubmitHandler(evt) {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
     profileAbout.textContent = aboutInput.value;
-    close();
+    close(popup);
 }
 
 function formSubmitHandlerAdd(e) {
@@ -105,7 +105,7 @@ function formSubmitHandlerAdd(e) {
     inputLink.value = '';
 
     newCard(cardContent);
-    close();
+    close(popupAdd);
 }
 
 function handlerDelit(evt) {
@@ -121,11 +121,11 @@ function handlerLike(evt) {
 
 function openImagePopup(evt) {
     const cardImage = evt.target.closest('.element__foto');
-    imageFoto = cardImage.getAttribute('src');
-    imageName = cardImage.getAttribute('alt');
-    popupImageFoto.setAttribute('src', imageFoto);
-    popupImageFoto.setAttribute('alt', imageName);
-    popupImageFoto.setAttribute('alt', imageName);
+    imageLink = cardImage.getAttribute('src');
+    imageAlt = cardImage.getAttribute('alt');
+    popupImageFoto.setAttribute('src', imageLink);
+    popupImageFoto.setAttribute('alt', imageAlt);
+    imageName.textContent = imageAlt;
     openPopup(imagePopup);
 }
 
