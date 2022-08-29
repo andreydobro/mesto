@@ -38,7 +38,7 @@ let addOpenButton = document.querySelector('.profile__add-button_opened');
 let popupAdd = document.querySelector('.popup-add');
 let popupImage = document.querySelector('.popup__image');
 let elementText = document.querySelector('.element__title');
-let cartTemplate = document.querySelector('.cart__template').content;
+let cartTemplate = document.querySelector('.cart__template');
 let elementList = document.querySelector('.elements');
 let inputTitle = document.querySelector('.popup__input_name_add');
 let inputLink = document.querySelector('.popup__input_about_add');
@@ -49,18 +49,19 @@ let imagePopup = document.querySelector('.popup-image');
 let imageFoto = document.querySelector('.popup__image-foto');
 let imageName = document.querySelector('.popup__name-image');
 let buttonCloseAdd = document.querySelector('.popup__icon-close_add');
+let popupImageFoto = document.querySelector('.popup__image-foto');
 
 
 
-function openPopup(element) {
-    element.classList.add('popup_opened');
+function openPopup(popup) {
+    popup.classList.add('popup_opened');
     nameInput.value = profileName.textContent;
     aboutInput.value = profileAbout.textContent;
-    popupAdd.classList.add('popup-add');
+    
 }
 
-function close (element) {
-    element.classList.remove('popup_opened');
+function close (popup) {
+    popup.classList.remove('popup_opened');
 }
 
 closeButtton.addEventListener('click', function () {
@@ -83,13 +84,7 @@ addOpenButton.addEventListener('click', function () {
     openPopup(popupAdd);
 });
 
-let closePopup = function () {
-    popup.classList.remove('popup_opened');
-}
 
-let closePopupAdd = function () {
-    popupAdd.classList.remove('popup_opened');
-}
 
 function formSubmitHandler(evt) {
     evt.preventDefault();
@@ -128,13 +123,14 @@ function openImagePopup(evt) {
     const cardImage = evt.target.closest('.element__foto');
     imageFoto = cardImage.getAttribute('src');
     imageName = cardImage.getAttribute('alt');
-    popupImage.setAttribute('src', imageFoto);
-    popupImage.setAttribute('alt', imageName);
-    openPopup(popupImage);
+    popupImageFoto.setAttribute('src', imageFoto);
+    popupImageFoto.setAttribute('alt', imageName);
+    popupImageFoto.setAttribute('alt', imageName);
+    openPopup(imagePopup);
 }
 
 function newCard(text) {
-    const newCartElement = cartTemplate.cloneNode(true);
+    const newCartElement = cartTemplate.content.cloneNode(true);
     newCartElement.querySelector('.element__title').textContent = text.name
     newCartElement.querySelector('.element__foto').textContent = text.name
     newCartElement.querySelector('.element__foto').src = text.link
