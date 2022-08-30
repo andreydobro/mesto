@@ -20,9 +20,8 @@ const formAdd = document.querySelector('.popup__form-add');
 const buttonCloseImage = document.querySelector('.popup__icon-close_image');
 const elementFoto = document.querySelector('.element__foto');
 const imageFoto = document.querySelector('.popup__image-foto');
-const imageName = document.querySelector('.popup__name-image');
+const imageName = document.querySelector('.popup__text');
 const buttonCloseAdd = document.querySelector('.popup__icon-close_add');
-const popupImageFoto = document.querySelector('.popup__image-foto');
 
 function openPopup(popup) {
     popup.classList.add('popup_opened');
@@ -92,13 +91,13 @@ function handleLikeCard(evt) {
 
 function openImagePopup(evt) {
     const cardImage = evt.target.closest('.element__foto');
-    imageFoto = cardImage.getAttribute('src');
-    imageName = cardImage.getAttribute('alt');
-    popupImageFoto.setAttribute('src', imageFoto);
-    popupImageFoto.setAttribute('alt', imageName);
-    imageName.textContent = imageName;
+    imagiLink = cardImage.getAttribute('src');
+    imagiAlt = cardImage.getAttribute('alt');
+    imageFoto.setAttribute('src', imagiLink);
+    imageName.setAttribute('alt', imagiAlt);
+    imageName.textContent = imagiAlt;
     openPopup(popupImage);
-}
+  };
 
 
 
@@ -108,7 +107,7 @@ function createCard(text) {
     newCardElement.querySelector('.element__foto').textContent = text.name
     newCardElement.querySelector('.element__foto').src = text.link
     newCardElement.querySelector('.element__foto').alt = text.name
-
+    
     /*Удаление элементов*/
     newCardElement
         .querySelector('.element__back')
@@ -122,7 +121,7 @@ function createCard(text) {
     .querySelector('.element__foto')
     .addEventListener('click', openImagePopup);
 
-    elements.prepend(newCardElement)
+    elements.prepend( newCardElement);
 }
 
 /*Копия элемента*/
