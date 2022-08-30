@@ -52,10 +52,10 @@
             <button class="popup__icon-close popup__icon-close_add" type="button"></button>
             <form class="popup__form popup__form-add" name="name about">
                 <input class="popup__input_name_add popup__input popup__input_name_edit" value="" name="name"
-                    type="text" placeholder="Название">
+                    type="text" placeholder="Название" required>
                 <input class="popup__input_about_add popup__input" value="" name="about" type="text"
-                    placeholder="Ссылка на картинку">
-                <button class="popup__bottom-save" type="submit">Создать</button>
+                    placeholder="Ссылка на картинку" required>
+                <button class="popup__bottom-save popup__bottom-save_add" type="submit">Создать</button>
             </form>
         </div>
     </section>
@@ -66,7 +66,7 @@
             <h2 class="popup__name-image"></h2>
         </div>
     </section>
-    <template class="cart__template">
+    <template class="template">
         <li class="element">
             <button class="element__back" tupe="button"></button>
             <img class="element__foto" src="#" alt="#">
@@ -74,6 +74,7 @@
             <button class="element__heart" type="button"></button>
         </li>
     </template>
+    <script src="./scripts/cards.js"></script>
     <script src="./scripts/index.js"></script>
 </body>
 
