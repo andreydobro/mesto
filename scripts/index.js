@@ -102,32 +102,31 @@ function openImagePopup(evt) {
 
 
 
-function newCard(text) {
-    const newCartElement = template.content.cloneNode(true);
-    newCartElement.querySelector('.element__title').textContent = text.name
-    newCartElement.querySelector('.element__foto').textContent = text.name
-    newCartElement.querySelector('.element__foto').src = text.link
-    newCartElement.querySelector('.element__foto').alt = text.name
+function createCard(text) {
+    const newCardElement = template.content.cloneNode(true);
+    newCardElement.querySelector('.element__title').textContent = text.name
+    newCardElement.querySelector('.element__foto').textContent = text.name
+    newCardElement.querySelector('.element__foto').src = text.link
+    newCardElement.querySelector('.element__foto').alt = text.name
 
     /*Удаление элементов*/
-    newCartElement
+    newCardElement
         .querySelector('.element__back')
         .addEventListener('click', handleDeleteCard);
     /*Постановка лайка*/
-    newCartElement
+    newCardElement
         .querySelector('.element__heart')
-        .addEventListener('click',handleLikeCard);
+        .addEventListener('click', handleLikeCard);
     /*Открытиее попапа c картинкой*/
-    newCartElement
+    newCardElement
     .querySelector('.element__foto')
     .addEventListener('click', openImagePopup);
 
-    elements.prepend(newCartElement)
+    elements.prepend(newCardElement)
 }
 
-
 /*Копия элемента*/
-initialCards.forEach(newCard);
+initialCards.forEach(createCard);
 
 formAdd.addEventListener('submit', handleCardFormSubmit);
 popupFormEdit.addEventListener('submit', handleProfileFormSubmit);
