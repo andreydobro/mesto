@@ -27,7 +27,7 @@ function openPopup(popup) {
     popup.classList.add('popup_opened');
 }
 
-function close (popup) {
+function close(popup) {
     popup.classList.remove('popup_opened');
 }
 
@@ -57,7 +57,7 @@ function popupInputValueEdit() {
     aboutInput.value = profileAbout.textContent;
 }
 
-function handleProfileFormSubmit(evt) { 
+function handleProfileFormSubmit(evt) {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
     profileAbout.textContent = aboutInput.value;
@@ -82,38 +82,9 @@ function openImagePopup(evt) {
     imageName.setAttribute('alt', imagiAlt);
     imageName.textContent = imagiAlt;
     openPopup(popupImage);
-  };
+};
 
-function createCard(text) {
-    const newCard = template.content.cloneNode(true);
-    newCard.querySelector('.element__title').textContent = text.name
-    const fotoElement = newCard.querySelector('.element__foto');
-    fotoElement.textContent = text.name
-    fotoElement.src = text.link
-    fotoElement.alt = text.name
-    
-    /*Удаление элементов*/
-    newCard
-        .querySelector('.element__back')
-        .addEventListener('click', handleDeleteCard);
-    /*Постановка лайка*/
-    newCard
-        .querySelector('.element__heart')
-        .addEventListener('click', handleLikeCard);
-    /*Открытиее попапа c картинкой*/
-    newCard
-    .querySelector('.element__foto')
-    .addEventListener('click', openImagePopup);
-
-    return newCard;
-}
-
-initialCards.forEach((text) => {
-    const newCard = createCard(text);
-    elements.prepend(newCard);
-  });
-
-  function handleCardFormSubmit(evt) {
+function handleCardFormSubmit(evt) {
     evt.preventDefault();
     const cardContent = {
         name: titleInput.value,
@@ -127,6 +98,34 @@ initialCards.forEach((text) => {
     close(popupAdd);
 }
 
+function createCard(text) {
+    const newCard = template.content.cloneNode(true);
+    newCard.querySelector('.element__title').textContent = text.name
+    const fotoElement = newCard.querySelector('.element__foto');
+    fotoElement.textContent = text.name
+    fotoElement.src = text.link
+    fotoElement.alt = text.name
+
+    /*Удаление элементов*/
+    newCard
+        .querySelector('.element__back')
+        .addEventListener('click', handleDeleteCard);
+    /*Постановка лайка*/
+    newCard
+        .querySelector('.element__heart')
+        .addEventListener('click', handleLikeCard);
+    /*Открытиее попапа c картинкой*/
+    newCard
+        .querySelector('.element__foto')
+        .addEventListener('click', openImagePopup);
+
+    return newCard;
+}
+
+initialCards.forEach((text) => {
+    const newCard = createCard(text);
+    elements.prepend(newCard);
+});
 
 formAdd.addEventListener('submit', handleCardFormSubmit);
 popupFormEdit.addEventListener('submit', handleProfileFormSubmit);

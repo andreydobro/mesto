@@ -9,13 +9,14 @@
     flex-wrap: wrap;
 }
 
-@media screen and (max-width: 710px) {
+@media screen and (max-width: 920px) {
     .profile {
         justify-content: center;
+        flex-direction: column;
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 558px) {
     .profile {
         max-width: 282px;
         min-height: 286px;

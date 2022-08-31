@@ -6,22 +6,10 @@
     justify-content: space-between;
 }
 
-@media screen and (max-width: 530px) {
+@media screen and (max-width: 558px) {
     .profile__info {
-        margin: 20px 0 0;
-    }
-}
-
-@media screen and (max-width: 420px) {
-    .profile__info {
-        width: 290px;
-    }
-}
-
-@media screen and (max-width: 320px) {
-    .profile__info {
-        width: 282px;
+        align-items: center;
+        width: 243px;
         margin: 25px 0 0;
-        justify-content: center;
     }
 }
