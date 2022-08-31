@@ -64,20 +64,6 @@ function handleProfileFormSubmit(evt) {
     close(popup);
 }
 
-function handleCardFormSubmit(e) {
-    e.preventDefault();
-    const cardContent = {
-        name: titleInput.value,
-        link: linkInput.value
-    }
-    const text = titleInput.value;
-    const link = linkInput.value;
-    formAdd.reset();
-
-    createCard(cardContent);
-    close(popupAdd);
-}
-
 function handleDeleteCard(evt) {
     const cardElement = evt.target.closest('.element');
     cardElement.remove();
@@ -126,6 +112,20 @@ initialCards.forEach((text) => {
     const newCard = createCard(text);
     elements.prepend(newCard);
   });
+
+  function handleCardFormSubmit(evt) {
+    evt.preventDefault();
+    const cardContent = {
+        name: titleInput.value,
+        link: linkInput.value
+    }
+    const text = titleInput.value;
+    const link = linkInput.value;
+    formAdd.reset();
+
+    elements.prepend(createCard(text));
+    close(popupAdd);
+}
 
 
 formAdd.addEventListener('submit', handleCardFormSubmit);
