@@ -86,7 +86,6 @@ function handleDeleteCard(evt) {
 function handleLikeCard(evt) {
     const likeElement = evt.target.closest('.element');
     evt.target.classList.toggle('element__heart_active');
-    console.log(likeElement);
 }
 
 function openImagePopup(evt) {
@@ -99,33 +98,35 @@ function openImagePopup(evt) {
     openPopup(popupImage);
   };
 
-
-
 function createCard(text) {
-    const newCardElement = template.content.cloneNode(true);
-    newCardElement.querySelector('.element__title').textContent = text.name
-    newCardElement.querySelector('.element__foto').textContent = text.name
-    newCardElement.querySelector('.element__foto').src = text.link
-    newCardElement.querySelector('.element__foto').alt = text.name
+    const newCard = template.content.cloneNode(true);
+    newCard.querySelector('.element__title').textContent = text.name
+    const fotoElement = newCard.querySelector('.element__foto');
+    fotoElement.textContent = text.name
+    fotoElement.src = text.link
+    fotoElement.alt = text.name
     
     /*Удаление элементов*/
-    newCardElement
+    newCard
         .querySelector('.element__back')
         .addEventListener('click', handleDeleteCard);
     /*Постановка лайка*/
-    newCardElement
+    newCard
         .querySelector('.element__heart')
         .addEventListener('click', handleLikeCard);
     /*Открытиее попапа c картинкой*/
-    newCardElement
+    newCard
     .querySelector('.element__foto')
     .addEventListener('click', openImagePopup);
 
-    elements.prepend( newCardElement);
+    return newCard;
 }
 
-/*Копия элемента*/
-initialCards.forEach(createCard);
+initialCards.forEach((text) => {
+    const newCard = createCard(text);
+    elements.prepend(newCard);
+  });
+
 
 formAdd.addEventListener('submit', handleCardFormSubmit);
 popupFormEdit.addEventListener('submit', handleProfileFormSubmit);
