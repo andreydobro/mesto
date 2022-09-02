@@ -45,14 +45,14 @@ buttonCloseImage.addEventListener('click', function () {
 
 buttonOpenEdit.addEventListener('click', function () {
     openPopup(popupEdit);
-    popupInputValueEdit();
+    editPopupInputValue();
 });
 
 buttonOpenAdd.addEventListener('click', function () {
     openPopup(popupAdd);
 });
 
-function popupInputValueEdit() {
+function editPopupInputValue() {
     nameInput.value = profileName.textContent;
     aboutInput.value = profileAbout.textContent;
 }
@@ -122,7 +122,6 @@ function createCard(card) {
 initialCards.forEach(renderCard); 
 
 function renderCard(card) {
-    createCard(card);
     elements.prepend(createCard(card));
 }
 
