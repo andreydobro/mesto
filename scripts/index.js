@@ -31,6 +31,15 @@ function closePopup(popup) {
     popup.classList.remove('popup_opened');
 }
 
+document.addEventListener('keydown', function (evt) {
+    console.log(evt);
+    if(evt.keyCode === 27) {
+        closePopup(popupEdit);
+        closePopup(popupAdd);
+        closePopup(popupImage);
+    }
+});
+
 buttonCloseEdit.addEventListener('click', function () {
     closePopup(popupEdit)
 });
