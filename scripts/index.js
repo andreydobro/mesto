@@ -1,4 +1,4 @@
-const popupEdit = document.querySelector('.popup');
+const popupEdit = document.querySelector('.popup-edit');
 const buttonOpenEdit = document.querySelector('.profile__edit-button_opened');
 const buttonCloseEdit = document.querySelector('.popup__icon-close');
 const popupFormEdit = document.querySelector('.popup__form');
@@ -22,6 +22,8 @@ const elementFoto = document.querySelector('.element__foto');
 const imageFoto = document.querySelector('.popup__image-foto');
 const imageName = document.querySelector('.popup__text');
 const buttonCloseAdd = document.querySelector('.popup__icon-close_add');
+const popups = document.querySelectorAll('.popup');
+const popupErrors = document.querySelectorAll('.popup__error');
 
 function openPopup(popup) {
     popup.classList.add('popup_opened');
@@ -29,16 +31,25 @@ function openPopup(popup) {
 
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
+    popup.addEventListener('click', handleClickOverlayPopup)
 }
 
+//закрытие по Esc
 document.addEventListener('keydown', function (evt) {
-    console.log(evt);
     if(evt.keyCode === 27) {
         closePopup(popupEdit);
         closePopup(popupAdd);
         closePopup(popupImage);
     }
 });
+
+//Закрытие по клику на оверлей
+function handleClickOverlayPopup(evt) {
+    if(!evt.target.closest('.popup__content')) {
+        closePopup(evt.target.closest('.popup'));
+    }
+    
+}
 
 buttonCloseEdit.addEventListener('click', function () {
     closePopup(popupEdit)
