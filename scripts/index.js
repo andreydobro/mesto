@@ -56,7 +56,7 @@ buttonCloseEdit.addEventListener('click', function () {
 });
 
 buttonCloseAdd.addEventListener('click', function () {
-    closePopup(popupAdd)
+    closePopup(popupAdd);
 });
 
 buttonCloseImage.addEventListener('click', function () {
@@ -70,6 +70,8 @@ buttonOpenEdit.addEventListener('click', function () {
 
 buttonOpenAdd.addEventListener('click', function () {
     openPopup(popupAdd);
+    addDisabledButton(buttonSaveAdd);
+    removeDisabledButton(popupAdd);
 });
 
 function editPopupInputValue() {
