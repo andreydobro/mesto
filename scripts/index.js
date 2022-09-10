@@ -60,18 +60,20 @@ buttonCloseAdd.addEventListener('click', function () {
 });
 
 buttonCloseImage.addEventListener('click', function () {
-    closePopup(popupImage)
+    closePopup(popupImage);
 });
 
 buttonOpenEdit.addEventListener('click', function () {
     openPopup(popupEdit);
     editPopupInputValue();
+    eneableSubmitButton(buttonSaveEdit);
+    resetErrorPopupInput(popupEdit);
 });
 
 buttonOpenAdd.addEventListener('click', function () {
     openPopup(popupAdd);
-    addDisabledButton(buttonSaveAdd);
-    removeDisabledButton(popupAdd);
+    disableSubmitButton(buttonSaveAdd);
+    eneableSubmitButton (popupAdd);
 });
 
 function editPopupInputValue() {
