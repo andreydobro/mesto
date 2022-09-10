@@ -4,8 +4,8 @@ const buttonCloseEdit = document.querySelector('.popup__icon-close');
 const popupFormEdit = document.querySelector('.popup__form');
 const nameInput = document.querySelector('.popup__input_name_edit');
 const aboutInput = document.querySelector('.popup__input_about_edit');
-const buttonSaveEdit = document.querySelector('.popup__bottom-save');
-const buttonSaveAdd = document.querySelector('.popup__bottom-save_add');
+const buttonSaveEdit = document.querySelector('.popup__button-save');
+const buttonSaveAdd = document.querySelector('.popup__button-save_add');
 const profileName = document.querySelector('.profile__name');
 const profileAbout = document.querySelector('.profile__about');
 const buttonOpenAdd = document.querySelector('.profile__add-button_opened');
@@ -24,6 +24,7 @@ const imageName = document.querySelector('.popup__text');
 const buttonCloseAdd = document.querySelector('.popup__icon-close_add');
 const popups = document.querySelectorAll('.popup');
 const popupErrors = document.querySelectorAll('.popup__error');
+const disabled = document.querySelector('.popup__buton_disabled')
 
 function openPopup(popup) {
     popup.classList.add('popup_opened');
@@ -47,8 +48,7 @@ document.addEventListener('keydown', function (evt) {
 function handleClickOverlayPopup(evt) {
     if(!evt.target.closest('.popup__content')) {
         closePopup(evt.target.closest('.popup'));
-    }
-    
+    } 
 }
 
 buttonCloseEdit.addEventListener('click', function () {
@@ -66,14 +66,12 @@ buttonCloseImage.addEventListener('click', function () {
 buttonOpenEdit.addEventListener('click', function () {
     openPopup(popupEdit);
     editPopupInputValue();
-    eneableSubmitButton(buttonSaveEdit);
-    resetErrorPopupInput(popupEdit);
 });
 
 buttonOpenAdd.addEventListener('click', function () {
     openPopup(popupAdd);
     disableSubmitButton(buttonSaveAdd);
-    eneableSubmitButton (popupAdd);
+    eneableSubmitButton(popupAdd);
 });
 
 function editPopupInputValue() {
