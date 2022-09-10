@@ -13,17 +13,17 @@ const showInputError = (formElement, inputElement, config, errorMessage) => {
   inputElement.classList.add(config.inputErrorClass);
   errorElement.textContent = errorMessage;
   errorElement.classList.add(config.errorClass);
-}
+};
 
 const hideInputError = (formElement, inputElement, config) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-  console.log(formElement, inputElement)
   inputElement.classList.remove(config.inputErrorClass);
   errorElement.classList.remove(config.errorClass);
   errorElement.textContent = '';
 }
 
 const checkInputValidity = (formElement, inputElement, config) => {
+  console.log(inputElement)
   if (!inputElement.validity.valid) {
     showInputError(formElement, inputElement, config, inputElement.validationMessage);
   } else {
@@ -37,26 +37,25 @@ const hasInvalidInput = (inputList) => {
 });
 }
 
-const disableSubmitButton = (buttonElement) => {
+const addSubmitButton = (buttonElement) => {
   buttonElement.classList.add(validationConfig.inactiveButtonClass);
   buttonElement.disabled = true;
 }
 
-const eneableSubmitButton = (buttonElement) => {
+const removeSubmitButton = (buttonElement) => {
   buttonElement.classList.remove(validationConfig.inactiveButtonClass);
   buttonElement.disabled = false;
 }
 
 const toggleButtonState = (inputList, buttonElement) => {
   if (hasInvalidInput(inputList)) {
-    disableSubmitButton(buttonElement);
+    addSubmitButton(buttonElement);
 } else {
-  eneableSubmitButton(buttonElement);
+  removeSubmitButton(buttonElement);
 }
 }
 
 const setEventListeners = (formElement, config) => {
-  console.log(setEventListeners)
   const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
   const buttonElement = formElement.querySelector(config.submitButtonSelector);
   
@@ -66,6 +65,7 @@ const setEventListeners = (formElement, config) => {
     inputElement.addEventListener('input', function () {
       checkInputValidity(formElement, inputElement, config);
       toggleButtonState(inputList, buttonElement, config);
+      console.log(checkInputValidity);
     });
   });
 }

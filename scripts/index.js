@@ -24,7 +24,6 @@ const imageName = document.querySelector('.popup__text');
 const buttonCloseAdd = document.querySelector('.popup__icon-close_add');
 const popups = document.querySelectorAll('.popup');
 const popupErrors = document.querySelectorAll('.popup__error');
-const disabled = document.querySelector('.popup__buton_disabled')
 
 function openPopup(popup) {
     popup.classList.add('popup_opened');
@@ -66,12 +65,13 @@ buttonCloseImage.addEventListener('click', function () {
 buttonOpenEdit.addEventListener('click', function () {
     openPopup(popupEdit);
     editPopupInputValue();
+    removeSubmitButton(buttonSaveEdit);
 });
 
 buttonOpenAdd.addEventListener('click', function () {
     openPopup(popupAdd);
-    disableSubmitButton(buttonSaveAdd);
-    eneableSubmitButton(popupAdd);
+    addSubmitButton(buttonSaveAdd);
+    removeSubmitButton(popupAdd);
 });
 
 function editPopupInputValue() {
