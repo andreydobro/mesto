@@ -20,34 +20,35 @@ const formAdd = document.querySelector('.popup__form-add');
 const buttonCloseImage = document.querySelector('.popup__icon-close_image');
 const elementFoto = document.querySelector('.element__foto');
 const imageFoto = document.querySelector('.popup__image-foto');
-const imageName = document.querySelector('.popup__text');
+const popupImageName = document.querySelector('.popup__text');
 const buttonCloseAdd = document.querySelector('.popup__icon-close_add');
 const popups = document.querySelectorAll('.popup');
-const popupErrors = document.querySelectorAll('.popup__error');
 
 function openPopup(popup) {
     popup.classList.add('popup_opened');
+    document.addEventListener('keydown', closeByEsc);
+    popup.addEventListener('click', handleClickOverlayPopup);
 }
 
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
-    popup.addEventListener('click', handleClickOverlayPopup)
+    document.removeEventListener('keydown', closeByEsc);
+    popup.removeEventListener('click', handleClickOverlayPopup);
 }
 
 //закрытие по Esc
-document.addEventListener('keydown', function (evt) {
-    if(evt.keyCode === 27) {
-        closePopup(popupEdit);
-        closePopup(popupAdd);
-        closePopup(popupImage);
+function closeByEsc(evt) {
+    if (evt.key === 'Escape') {
+        const openedPopup = document.querySelector('.popup_opened');
+        closePopup(openedPopup);
     }
-});
+}
 
 //Закрытие по клику на оверлей
 function handleClickOverlayPopup(evt) {
-    if(!evt.target.closest('.popup__content')) {
-        closePopup(evt.target.closest('.popup'));
-    } 
+    if (evt.target.closest('.popup')) {
+        closePopup(evt.target);
+    }
 }
 
 buttonCloseEdit.addEventListener('click', function () {
@@ -65,13 +66,13 @@ buttonCloseImage.addEventListener('click', function () {
 buttonOpenEdit.addEventListener('click', function () {
     openPopup(popupEdit);
     editPopupInputValue();
-    removeSubmitButton(buttonSaveEdit);
+    removeSubmitButton(buttonSaveEdit, validationConfig);
 });
 
 buttonOpenAdd.addEventListener('click', function () {
     openPopup(popupAdd);
-    addSubmitButton(buttonSaveAdd);
-    removeSubmitButton(popupAdd);
+    addSubmitButton(buttonSaveAdd, validationConfig);
+    removeSubmitButton(popupAdd, validationConfig);
 });
 
 function editPopupInputValue() {
@@ -97,12 +98,10 @@ function handleLikeCard(evt) {
 }
 
 function openImagePopup(evt) {
-    const cardImage = evt.target.closest('.element__foto');
-    imagiLink = cardImage.getAttribute('src');
-    imagiAlt = cardImage.getAttribute('alt');
-    imageFoto.setAttribute('src', imagiLink);
-    imageName.setAttribute('alt', imagiAlt);
-    imageName.textContent = imagiAlt;
+    const target = evt.target;
+    imageFoto.src = target.src;
+    imageFoto.alt = target.alt;
+    popupImageName.textContent = target.alt;
     openPopup(popupImage);
 };
 
@@ -135,13 +134,13 @@ function createCard(card) {
         .addEventListener('click', handleLikeCard);
     /*Открытиее попапа c картинкой*/
     newCard
-        .querySelector('.element__foto')
+        fotoElement
         .addEventListener('click', openImagePopup);
 
     return newCard;
 }
 
-initialCards.forEach(renderCard); 
+initialCards.forEach(renderCard);
 
 function renderCard(card) {
     elements.prepend(createCard(card));
