@@ -1,6 +1,5 @@
 const popupEdit = document.querySelector('.popup-edit');
 const buttonOpenEdit = document.querySelector('.profile__edit-button_opened');
-const buttonCloseEdit = document.querySelector('.popup__icon-close');
 const popupFormEdit = document.querySelector('.popup__form');
 const nameInput = document.querySelector('.popup__input_name_edit');
 const aboutInput = document.querySelector('.popup__input_about_edit');
@@ -17,11 +16,9 @@ const elements = document.querySelector('.elements');
 const cardName = document.querySelector('.popup__input_name_add');
 const cardLink = document.querySelector('.popup__input_about_add');
 const formAdd = document.querySelector('.popup__form-add');
-const buttonCloseImage = document.querySelector('.popup__icon-close_image');
 const elementFoto = document.querySelector('.element__foto');
 const imageFoto = document.querySelector('.popup__image-foto');
 const popupImageName = document.querySelector('.popup__text');
-const buttonCloseAdd = document.querySelector('.popup__icon-close_add');
 const popups = document.querySelectorAll('.popup');
 
 function openPopup(popup) {
@@ -46,22 +43,10 @@ function closeByEsc(evt) {
 
 //Закрытие по клику на оверлей
 function handleClickOverlayPopup(evt) {
-    if (evt.target.closest('.popup')) {
-        closePopup(evt.target);
-    }
+    if (evt.target.classList.contains('popup')  || evt.target.classList.contains('popup__icon-close')) {
+        closePopup(evt.currentTarget);
+      }
 }
-
-buttonCloseEdit.addEventListener('click', function () {
-    closePopup(popupEdit)
-});
-
-buttonCloseAdd.addEventListener('click', function () {
-    closePopup(popupAdd);
-});
-
-buttonCloseImage.addEventListener('click', function () {
-    closePopup(popupImage);
-});
 
 buttonOpenEdit.addEventListener('click', function () {
     openPopup(popupEdit);
@@ -133,7 +118,6 @@ function createCard(card) {
         .querySelector('.element__heart')
         .addEventListener('click', handleLikeCard);
     /*Открытиее попапа c картинкой*/
-    newCard
         fotoElement
         .addEventListener('click', openImagePopup);
 
