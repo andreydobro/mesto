@@ -1,10 +1,10 @@
 class Card {
-    
-    constructor(obj, cardSelector, openImagePopup, handleDeleteCard) {
+
+    constructor(obj, cardSelector, /*openImagePopup, handleDeleteCard*/) {
         this._name = obj.name;
         this._link = obj.link;
         this._cardSelector = cardSelector;
-        this._openImagePopup = openImagePopup;
+        //this._openImagePopup = openImagePopup;
         /*this._handleDeleteCard = handleDeleteCard;*/
     }
 
@@ -30,7 +30,7 @@ class Card {
 
     _openImagePopup() {
         imageFoto.src = this._link;
-        popups.classList.add('popup_opened')
+        popups.classList.add('popup_image')
     }
 
     _setEventListeners() {
@@ -47,7 +47,7 @@ class Card {
         });
 
        this._element
-        .querySelector('.popup')
+        .querySelector('.element__foto')
         .addEventListener('click', () => {
             this._openImagePopup();
         });
@@ -59,7 +59,8 @@ class Card {
         this._element.querySelector('.element__foto').alt = this._name;
         this._element.querySelector('.element__title').textContent = this._name;
 
-       
+        
+    
         this._setEventListeners();
         return this._element;
     }
