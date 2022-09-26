@@ -21,6 +21,8 @@ const imageFoto = document.querySelector('.popup__image-foto');
 const popupImageName = document.querySelector('.popup__text');
 const popups = document.querySelectorAll('.popup');
 
+
+
 function openPopup(popup) {
     popup.classList.add('popup_opened');
     document.addEventListener('keydown', closeByEsc);
@@ -72,23 +74,23 @@ function handleProfileFormSubmit(evt) {
     closePopup(popupEdit);
 }
 
-function handleDeleteCard(evt) {
+/*function handleDeleteCard(evt) {
     const cardElement = evt.target.closest('.element');
     cardElement.remove();
-}
+}*/
 
-function handleLikeCard(evt) {
+/*function handleLikeCard(evt) {
     const likeElement = evt.target.closest('.element');
     evt.target.classList.toggle('element__heart_active');
-}
+}*/
 
-function openImagePopup(evt) {
+/*function openImagePopup(evt) {
     const target = evt.target;
     imageFoto.src = target.src;
     imageFoto.alt = target.alt;
     popupImageName.textContent = target.alt;
     openPopup(popupImage);
-};
+};*/
 
 function handleCardFormSubmit(evt) {
     evt.preventDefault();
@@ -101,34 +103,34 @@ function handleCardFormSubmit(evt) {
     closePopup(popupAdd);
 }
 
-function createCard(card) {
+/*function createCard(card) {
     const newCard = template.content.cloneNode(true);
     newCard.querySelector('.element__title').textContent = card.name
     const fotoElement = newCard.querySelector('.element__foto');
     fotoElement.textContent = card.name
     fotoElement.src = card.link
-    fotoElement.alt = card.name
+    fotoElement.alt = card.name*/
 
     /*Удаление элементов*/
-    newCard
+    /*newCard
         .querySelector('.element__back')
         .addEventListener('click', handleDeleteCard);
     /*Постановка лайка*/
-    newCard
+   /* newCard
         .querySelector('.element__heart')
         .addEventListener('click', handleLikeCard);
     /*Открытиее попапа c картинкой*/
-        fotoElement
+       /* fotoElement
         .addEventListener('click', openImagePopup);
 
     return newCard;
-}
+}*/
 
-initialCards.forEach(renderCard);
+/*initialCards.forEach(renderCard);
 
 function renderCard(card) {
     elements.prepend(createCard(card));
-}
+}*/
 
 formAdd.addEventListener('submit', handleCardFormSubmit);
 popupFormEdit.addEventListener('submit', handleProfileFormSubmit);
