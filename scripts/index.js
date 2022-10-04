@@ -23,7 +23,7 @@ const elementFoto = document.querySelector('.element__foto');
 const popupImage = document.querySelector('.popup_image');
 const imageFoto = document.querySelector('.popup__image-foto');
 const popupImageName = document.querySelector('.popup__text');
-const popup = document.querySelectorAll('.popup');
+const popups = document.querySelectorAll('.popup');
 
 const validationConfig = {
     formSelector: '.popup__form',
@@ -35,14 +35,14 @@ const validationConfig = {
     errorClass: 'popup__error_visible'
 };
 
-const formValidator = {}
+const formValidators = {}
 const onValidation = (config) => {
   const formList = Array.from(document.querySelectorAll(config.formSelector))
   formList.forEach((formElement) => {
     const validator = new FormValidator(config, formElement)
     const formName = formElement.getAttribute('name')
 
-    formValidator[formName] = validator;
+    formValidators[formName] = validator;
     validator.enableValidation();
   });
 };
@@ -91,8 +91,7 @@ buttonOpenEdit.addEventListener('click', function () {
 
 buttonOpenAdd.addEventListener('click', function () {
     openPopup(popupAdd);
-    cardName.value = '';
-    cardLink.value = '';
+    formAdd.reset();
 });
 
 function handleProfileFormSubmit(evt) {
@@ -103,14 +102,14 @@ function handleProfileFormSubmit(evt) {
 }
 
 // создание карточки
-function createCard(obj) {
-    const newCardElement = new Card(obj,  '.template', openImagePopup).createCard();
+function createCard(cardObj) {
+    const newCardElement = new Card(cardObj,  '.template', openImagePopup).createCard();
     return newCardElement;
   }
   
   // добавлениее карточки на страницу
-  function renderCard(obj) {
-    const createdCard = createCard(obj);
+  function renderCard(cardObj) {
+    const createdCard = createCard(cardObj);
     elements.prepend(createdCard);
   }
 
@@ -121,14 +120,12 @@ function createCard(obj) {
     const newCard = new Object();
     newCard.name = namePlace;
     newCard.link = linkPlace;
-  
-    formAdd.reset();
-  
+
     renderCard(newCard);
     closePopup(popupAdd);
   }
   
-initialCards.forEach((obj) => renderCard(obj));
+  initialCards.forEach(renderCard); 
 
 formAdd.addEventListener('submit', handleCardFormSubmit);
 popupFormEdit.addEventListener('submit', handleProfileFormSubmit);
