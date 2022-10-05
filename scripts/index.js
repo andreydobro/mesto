@@ -1,5 +1,5 @@
 import { initialCards } from "./initialCards.js";
-import Card from './Card.js';
+import Card from './Card';
 import FormValidator from './FormValidator.js';
 
 const popupEdit = document.querySelector('.popup-edit');
