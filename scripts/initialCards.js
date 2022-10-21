@@ -21,6 +21,6 @@ export const initialCards = [
     },
     {
         name: 'Байкал',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+        link: 'https://all-aforizmy.ru/wp-content/uploads/2022/02/scale_1200-8.jpg'
     }
 ];
