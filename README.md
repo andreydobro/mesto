@@ -36,4 +36,9 @@
 1. Созданы классов Card и FormValidator.
 2. Отдельные js-файлы подключены в index.html как модули.
 
+## Практическая 8
+
+1. Созданы классы: Section, Popup, PopupWithImage, PopupWitthForm, UserInfo
+2. Настроена сборка Вебпак
+
 Cайт <a href="https://andreydobro.github.io/mesto/">Место</a>
