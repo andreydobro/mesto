@@ -21,9 +21,10 @@ export default class Popup {
     }
   
     _handleClickOverlayPopup = (evt) => {
-      if (!evt.target.closest('.popup__content')) {
-          this.close();
-      }
+      if (evt.target === this._popup) {
+        this.close();
+    }
+
     }
 
     setEventListeners() {

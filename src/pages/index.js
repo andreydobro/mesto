@@ -14,25 +14,6 @@ import {
 
 import './index.css';
 
-//const popupEdit = document.querySelector('.popup-edit');
-const popupFormEdit = document.querySelector('.popup__form');
-const nameInput = document.querySelector('.popup__input_name_edit');
-const aboutInput = document.querySelector('.popup__input_about_edit');
-const buttonSaveEdit = document.querySelector('.popup__button-save');
-const buttonSaveAdd = document.querySelector('.popup__button-save_add');
-const profileName = document.querySelector('.profile__name');
-const profileAbout = document.querySelector('.profile__about');
-//const popupAdd = document.querySelector('.popup-add');
-const elementText = document.querySelector('.element__title');
-const template = document.querySelector('.template');
-const elements = document.querySelector('.elements');
-const cardName = document.querySelector('.popup__input_name_add');
-const cardLink = document.querySelector('.popup__input_about_add');
-const formAdd = document.querySelector('.popup__form-add');
-const elementFoto = document.querySelector('.element__foto');
-const popupImages = document.querySelector('.popup_image');
-const popups = document.querySelectorAll('.popup');
-
 // СОЗДАНИЕ КАРТОЧКИ
   function createCard(dataObj) {
     const card = new Card(dataObj, '.template', () => {popupWithImage.open(dataObj)});

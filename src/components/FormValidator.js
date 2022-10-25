@@ -11,8 +11,8 @@ export default class FormValidator {
     this._formElement = formElement;
     this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);
     this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
-    this._popupErrors = Array.from(this._formElement.querySelectorAll(this._popupErrorSelector));
-    this._popupInputs = this._formElement.querySelectorAll(this._inputSelector);
+   // this._popupErrors = Array.from(this._formElement.querySelectorAll(this._popupErrorSelector));
+   // this._popupInputs = this._formElement.querySelectorAll(this._inputSelector);
   }
 
   _showInputError(inputElement) {
@@ -59,17 +59,12 @@ export default class FormValidator {
     } else {
       this._removeDisabledButton()
     }
-  };
+  }
 
   resetErrorPopupInput() {
-    this._popupErrors.forEach((popupError) => {
-      popupError.textContent = '';
+    this._inputList.forEach((inputElement) => {
+      this._hideInputError(inputElement);
     });
-
-    this._popupInputs.forEach((popupInput) => {
-      popupInput.classList.remove(this._inputErrorClass);
-    });
-
     this._toggleButtonState();
   };
 
