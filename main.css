@@ -17,6 +17,7 @@
 .element__foto{border-radius:10px 10px 0 0;cursor:pointer;height:282px;width:282px}
 .element__title{font-size:24px;font-weight:900;line-height:29px;margin:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:184px}
 .element__heart{background-color:#fff;background-image:url(87ed371465c7a6a1cd01.svg);background-repeat:no-repeat;background-size:22px;border:0;cursor:pointer;height:19px;margin:7px 0 0;width:22px}.element__heart:hover{opacity:.5}
+.element__like-count{color:#000;font-family:Inter,Arial,Helvetica,sans-serif;font-size:13px;font-weight:400;line-height:15.73px;margin:1px 0 0;padding:0;text-align:center}
 .footer{margin:67px 0 60px;max-width:318px}@media screen and (max-width:626px){.footer{margin:0 auto;min-width:282px;padding:48px 19px 36px}}
 .footer__copyright{color:#545454;font-size:18px;font-weight:400;line-height:22px;margin:0}@media screen and (max-width:320px){.footer__copyright{font-size:14px;line-height:17px}}
 .popup{align-items:center;background:rgba(0,0,0,.8);display:flex;height:100%;justify-content:center;left:0;opacity:0;position:fixed;top:0;transition:visibility .8s,opacity .8s ease-in;visibility:hidden;width:100%}
