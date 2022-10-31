@@ -15,13 +15,15 @@ import {
 
 import './index.css';
 
-const api = new Api({
+const API_OPTIONS = {
   url: 'https://mesto.nomoreparties.co/v1/cohort-52',
-  headers: {
-    authorization: 'df12ed01-f693-4d5e-b6fe-aa462dOd5d58',
-    'Content-Type': 'application/json'
-  }
-});
+    headers: {
+      authorization: 'df12ed01-f693-4d5e-b6fe-aa462dOd5d58',
+      'Content-Type': 'application/json'
+    },
+}
+
+const api = new Api(API_OPTIONS);
 
 // СОЗДАНИЕ КАРТОЧКИ
   function createCard(dataObj) {

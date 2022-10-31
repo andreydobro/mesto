@@ -10,4 +10,20 @@ export default class Api {
         }
         return Promise.reject(new Error(response.status))
     }
+
+    getUserInfo() {
+        return fetch(`${this._url}/users/me`, {
+            headers: this._header
+        })
+        .then(this._checkResponse)
+    }
+
+    getInitialCards() {
+        return fetch(`${this._url}/cards`, {
+            headers: this._header
+        })
+        .then(this._checkResponse)
+    }
+
+    //editUserInfo(name, about)
 }
