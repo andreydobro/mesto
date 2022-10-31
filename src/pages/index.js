@@ -4,6 +4,7 @@ import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
+import Api from '../components/Api.js';
 import { initialCards } from "../utils/constants";
 
 import {
@@ -13,6 +14,14 @@ import {
 } from '../utils/constants.js';
 
 import './index.css';
+
+const api = new Api({
+  url: 'https://mesto.nomoreparties.co/v1/cohort-52',
+  headers: {
+    authorization: 'df12ed01-f693-4d5e-b6fe-aa462dOd5d58',
+    'Content-Type': 'application/json'
+  }
+});
 
 // СОЗДАНИЕ КАРТОЧКИ
   function createCard(dataObj) {

@@ -24,7 +24,7 @@ export default class Card {
 
     _handleLikeCard() {
         this._likeButton
-            .classList.toggle('element__heart_active');
+            .classList.toggle('element__like_active');
     }
 
     _setEventListeners() {
@@ -49,7 +49,7 @@ export default class Card {
 
         this._cardImage = this._element.querySelector('.element__foto');
         this._cardName = this._element.querySelector('.element__title');
-        this._likeButton = this._element.querySelector('.element__heart');
+        this._likeButton = this._element.querySelector('.element__like');
         this._deleteButton = this._element.querySelector('.element__back');
 
         this._cardName.textContent = this._name;
