@@ -40,7 +40,6 @@ import './index.css';
     popupSelector: '.popup-add',
     handleFormSubmit: (form)  => {
       section.addItem(createCard(form));
-      console.log(section)
       },
   });
   popupAdd.setEventListeners();
