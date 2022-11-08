@@ -2,6 +2,7 @@ import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithImage from '../components/PopupWithImage.js';
+import PopupWithConfirm from '../components/PopupWithConfirm.js';
 import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
 import Api from '../components/Api.js';
@@ -11,6 +12,7 @@ import {
   validationConfig,
   buttonEdit,
   buttonAdd,
+  avatarEdit,
 } from '../utils/constants.js';
 
 import './index.css';
@@ -20,29 +22,41 @@ let userId;
 const api = new Api({
   url: 'https://mesto.nomoreparties.co/v1/cohort-52',
     headers: {
-      authorization: 'df12ed01-f693-4d5e-b6fe-aa462dOd5d58',
+      authorization: 'df12ed01-f693-4b5e-b6fe-aa462d0d5b58',
       'Content-Type': 'application/json'
     },
 })
 
 //Экземпляр класса Section
-const cardsList = new Section({
+const section = new Section({
   renderer: (dataObj) => {
-    cardsList.addItem(createCard(dataObj));
+    section.addItem(createCard(dataObj));
   }},
   '.elements'
 );
 
-api.getInitialCards().then( data => {
-  cardsList.renderItems(data)
+/*api.getInitialCards().then( data => {
+  section.renderItems(data)
 })
 
 api.getUserInfo().then( data => {
   userInfo.setUserInfo(data);
-    userInfo.setUserId(data);
+    userInfo.setUserId(data.avatar);
     userId = data._id
-})
+})*/
 
+//Создаём массив с промисами
+const arrayPromises = [api.getUserInfo(), api.getInitialCards()];
+Promise.all(arrayPromises)
+  .then(([userData, cards]) => {
+    userInfo.setUserInfo(userData);
+    userInfo.setUserId(userData);
+    userId = userData._id
+    section.renderItems(cards);
+  })
+  .catch((err) => {
+    console.log(`Ошибка: ${err}`)
+  });
 
  //функция создания карточки
 function createCard(dataObj) {
@@ -70,7 +84,7 @@ function createCard(dataObj) {
     });},
 
     handleTrashClick: () => {
-      popupConfirmForm.openPopup(dataObj);
+      popupConfirmForm.open(dataObj);
       cardForDelete = card
     }
   },
@@ -135,16 +149,16 @@ buttonEdit.addEventListener('click', () => {
 
 //Открытие попапа с формой редактирования аватара
  
-/*avatarEdit.addEventListener('click', () => {
-  popupAvatarForm.openPopup();
+avatarEdit.addEventListener('click', () => {
+  popupAvatarForm.open();
   const formAvatar = popupAvatarForm.getFormPopup();
   formValidators[ formAvatar.getAttribute('name') ].resetValidation()
-});*/
+});
 
 //экземпляр формы редактирования аватара
  
-/*const popupAvatarForm = new PopupWithForm({
-  popupSelector: '.popup_type_avatar',
+const popupAvatarForm = new PopupWithForm({
+  popupSelector: '.popup-avatar',
   handleFormSubmit: (userData)  => {
     return api.editUserAvatar(userData.avatar)
     .then(formData => {
@@ -155,24 +169,24 @@ buttonEdit.addEventListener('click', () => {
     })
   },
 });
-popupAvatarForm.setEventListeners();*/
+popupAvatarForm.setEventListeners();
 
 //экземпляр формы подтверждения удаления карточки
  
-/*const popupConfirmForm = new PopupWithConfirm({
-  popupSelector: '.popup_type_confirmation',
+const popupConfirmForm = new PopupWithConfirm({
+  popupSelector: '.popup-confirmation',
   handleFormSubmit: (cardId)  => {
     console.log(cardId);
-    return api.deleteCard(cardId) // cardId определяем в экземпляре Card
+    return api.deleteCard(cardId)
     .then(() => {
-      cardForDelete.handleDeleteCard();// cardForDelete определяем в экземпляре Card
+      cardForDelete.handleDeleteCard();
     })
     .catch((err) => {
       console.log('Ошибка при подтверждении удаления карточки', err);
     })
   },
 });
-popupConfirmForm.setEventListeners();*/
+popupConfirmForm.setEventListeners();
 
 const formValidators = {}
 const enableValidation = (config) => {

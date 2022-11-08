@@ -39,3 +39,4 @@ export const imageFoto = document.querySelector('.popup__image-foto');
 export const popupImageName = document.querySelector('.popup__text');
 export const buttonEdit = document.querySelector('.profile__edit-button');
 export const buttonAdd = document.querySelector('.profile__add-button');
+export const avatarEdit = document.querySelector('.profile__avatar');
