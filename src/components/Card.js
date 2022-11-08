@@ -85,8 +85,7 @@ export default class Card {
 
         // определение количества лайков и статус кнопки лайк
       this._likeCount.textContent = this._likes.length;
-      this._setStateLike(this._likes)
-      console.log(this._likes);
+      this._setStateLike(this._likes) 
   
       // корзина только у своих карточек
       if (this._userId !== this._owner._id) {

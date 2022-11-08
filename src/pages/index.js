@@ -35,7 +35,7 @@ const section = new Section({
   '.elements'
 );
 
-/*api.getInitialCards().then( data => {
+api.getInitialCards().then( data => {
   section.renderItems(data)
 })
 
@@ -43,7 +43,7 @@ api.getUserInfo().then( data => {
   userInfo.setUserInfo(data);
     userInfo.setUserId(data.avatar);
     userId = data._id
-})*/
+})
 
 //Создаём массив с промисами
 const arrayPromises = [api.getUserInfo(), api.getInitialCards()];
@@ -93,7 +93,6 @@ function createCard(dataObj) {
   const newCard = card.createCard();
   return newCard;
 }
-
 
 const popupWithImage = new PopupWithImage('.popup_image')
 popupWithImage.setEventListeners();
@@ -148,7 +147,6 @@ buttonEdit.addEventListener('click', () => {
 
 
 //Открытие попапа с формой редактирования аватара
- 
 avatarEdit.addEventListener('click', () => {
   popupAvatarForm.open();
   const formAvatar = popupAvatarForm.getFormPopup();
@@ -172,7 +170,6 @@ const popupAvatarForm = new PopupWithForm({
 popupAvatarForm.setEventListeners();
 
 //экземпляр формы подтверждения удаления карточки
- 
 const popupConfirmForm = new PopupWithConfirm({
   popupSelector: '.popup-confirmation',
   handleFormSubmit: (cardId)  => {
