@@ -41,12 +41,14 @@
             <button class="popup__icon-close" type="button"></button>
             <form class="popup__form" novalidate>
                 <label class="popup__label">
-                    <input id="username" class="popup__input_name_edit popup__input" value="" name="username" type="text" minlength="2" maxlength="40" required>
-                    <span id="username-error" class="popup__error"></span>
+                    <input id="name" class="popup__input_name_edit popup__input" value="" name="name"
+                        type="text" minlength="2" maxlength="40" required>
+                    <span id="name-error" class="popup__error"></span>
                 </label>
                 <label class="popup__label">
-                    <input id="userjob" class="popup__input_about_edit popup__input" value="" name="userjob" type="text" minlength="2" maxlength="200" required>
-                    <span id="userjob-error" class="popup__error"></span>
+                    <input id="about" class="popup__input_about_edit popup__input" value="" name="about" type="text"
+                        minlength="2" maxlength="200" required>
+                    <span id="about-error" class="popup__error"></span>
                 </label>
                 <button class="popup__button-save" type="submit">Сохранить</button>
             </form>
@@ -58,13 +60,13 @@
             <button class="popup__icon-close popup__icon-close_add" type="button"></button>
             <form class="popup__form popup__form-add" novalidate>
                 <label class="popup__label">
-                    <input id="name" class="popup__input_name_add popup__input popup__input_name_edit" value="" name="name"
-                    type="text" placeholder="Название" required minlength="2" maxlength="30">
+                    <input id="name" class="popup__input_name_add popup__input popup__input_name_edit" value=""
+                        name="name" type="text" placeholder="Название" required minlength="2" maxlength="30">
                     <span id="name-error" class="popup__error">Заполните поле</span>
                 </label>
                 <label class="popup__label">
                     <input id="url" class="popup__input_about_add popup__input" value="" name="link" type="url"
-                    placeholder="Ссылка на картинку" required>
+                        placeholder="Ссылка на картинку" required>
                     <span id="url-error" class="popup__error">Заполните поле</span>
                 </label>
                 <button class="popup__button-save popup__button-save_add" type="submit">Создать</button>
@@ -83,8 +85,10 @@
             <button class="element__back" tupe="button"></button>
             <img class="element__foto" src="#" alt="">
             <h2 class="element__title">Карачаевск</h2>
-            <button class="element__like" type="button"></button>
-            <div class="element__like-count">0</div>
+            <div class="element__like-form">
+                <button class="element__like" type="button"></button>
+                <div class="element__like-count">0</div>
+            </div>
         </li>
     </template>
     <!--<script src="./scripts/index.js" defer type="module"></script>-->

@@ -6,11 +6,10 @@
     background-size: 22px;
     width: 22px;
     height: 19px;
-    margin: 7px 0px 0px;
+    margin: 22px 0px 0px;
     cursor: pointer;
-    display: flex;
 }
 
-.element__heart:hover {
+.element__like:hover {
     opacity: 0.5;
 }

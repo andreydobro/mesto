@@ -7,4 +7,5 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    margin: 25px auto 26px 21px;
 }
