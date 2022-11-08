@@ -80,24 +80,16 @@ function createCard(dataObj) {
   return newCard;
 }
 
-/**
- * экземпляр попапа с картинкой
- */
+
 const popupWithImage = new PopupWithImage('.popup_image')
 popupWithImage.setEventListeners();
 
-/**
- * Открытие попапа с формой добавления новой карточки
- */
 buttonAdd.addEventListener('click', () => {
   popupAddForm.open();
   const formAdd = popupAddForm.getFormPopup();
   formValidators[ formAdd.getAttribute('name') ].resetValidation()
 });
 
-/**
- * экземпляр формы добавления новой карточки
- */
 const popupAddForm = new PopupWithForm({
   popupSelector: '.popup-add',
   handleFormSubmit: (cardData)  => {
@@ -112,18 +104,13 @@ const popupAddForm = new PopupWithForm({
 });
 popupAddForm.setEventListeners();
 
-/**
- * экземпляр UserInfo отвечает за управление отображением информации о пользователе на странице
- */
+
 const userInfo = new UserInfo({
   nameSelector: '.profile__name',
   jobSelector: '.profile__job',
   avatarSelector: '.profile__avatar',
 });
 
-/**
- * Экземпляр формы редактирования профиля
- */
 const popupEditForm = new PopupWithForm({
   popupSelector: '.popup-edit',
   handleFormSubmit: (user)  => {
@@ -137,9 +124,6 @@ const popupEditForm = new PopupWithForm({
   });
 popupEditForm.setEventListeners();
 
-/**
- * Открытие попапа с формой редактирования профиля
- */
 buttonEdit.addEventListener('click', () => {
   popupEditForm.open();
   const formEdit = popupEditForm.getFormPopup();
@@ -148,18 +132,17 @@ buttonEdit.addEventListener('click', () => {
   formValidators[ formEdit.getAttribute('name') ].resetValidation()
 });
 
-/**
- * Открытие попапа с формой редактирования аватара
- */
+
+//Открытие попапа с формой редактирования аватара
+ 
 /*avatarEdit.addEventListener('click', () => {
   popupAvatarForm.openPopup();
   const formAvatar = popupAvatarForm.getFormPopup();
   formValidators[ formAvatar.getAttribute('name') ].resetValidation()
 });*/
 
-/**
- * экземпляр формы редактирования аватара
- */
+//экземпляр формы редактирования аватара
+ 
 /*const popupAvatarForm = new PopupWithForm({
   popupSelector: '.popup_type_avatar',
   handleFormSubmit: (userData)  => {
@@ -174,9 +157,8 @@ buttonEdit.addEventListener('click', () => {
 });
 popupAvatarForm.setEventListeners();*/
 
-/**
- * экземпляр формы подтверждения удаления карточки
- */
+//экземпляр формы подтверждения удаления карточки
+ 
 /*const popupConfirmForm = new PopupWithConfirm({
   popupSelector: '.popup_type_confirmation',
   handleFormSubmit: (cardId)  => {
@@ -193,14 +175,11 @@ popupAvatarForm.setEventListeners();*/
 popupConfirmForm.setEventListeners();*/
 
 const formValidators = {}
-// Включение валидации
 const enableValidation = (config) => {
   const formList = Array.from(document.querySelectorAll(config.formSelector))
   formList.forEach((formElement) => {
     const validator = new FormValidator(config, formElement)
-// получаем данные из атрибута `name` у формы
     const formName = formElement.getAttribute('name')
-   // вот тут в объект записываем под именем формы
     formValidators[formName] = validator;
     validator.enableValidation();
   });
