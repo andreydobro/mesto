@@ -32,7 +32,7 @@ export default class PopupWithConfirm extends Popup {
         })
         .finally(() => {
           this._buttonPopup.textContent = this._initialText;
-        }) // в любом случае меняется текст кнопки обратно на начальный в `finally`
+        })
     });
   }
 
