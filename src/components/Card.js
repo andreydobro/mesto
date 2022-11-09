@@ -27,7 +27,7 @@ export default class Card {
         this._element = null;
     }
 
-    _clickLike() {
+    _addLike() {
         if (this._likeButton.classList.contains('element__like_active')) {
           this._handleRemoveLike(this)
         } else {
@@ -56,7 +56,7 @@ export default class Card {
 
         this._likeButton
             .addEventListener('click', () => {
-                this._handleLikeCard();
+                this._addLike();
             });
 
         this._cardImage

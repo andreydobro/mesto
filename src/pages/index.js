@@ -28,9 +28,6 @@ const api = new Api({
     },
 })
 
-//api.deleteCard()
-api.addLikeCard()
-api.removeLikeCard()
 //Экземпляр класса Section
 const section = new Section({
   renderer: (dataObj) => {
@@ -59,7 +56,7 @@ function createCard(dataObj) {
       popupWithImage.open(dataObj)
     },
 
-    handleAddLike: (dataObj) => {
+    handleAddLike: () => {
       api.addLikeCard(dataObj._id)
       .then(dataObj => {
         card.setLikeInfo(dataObj.likes);
@@ -138,7 +135,6 @@ buttonEdit.addEventListener('click', () => {
   popupEditForm.setInputValues(objectProfile);
   formValidators[ formEdit.getAttribute('name') ].resetValidation()
 });
-
 
 //Открытие попапа с формой редактирования аватара
 avatarEdit.addEventListener('click', () => {
