@@ -56,7 +56,6 @@ export default class Api {
     }
 
     addLikeCard(cardId) {
-        console.log(cardId)
         return fetch(`${this._url}/cards/${cardId}/likes`, {
             method: 'PUT',
             headers: this._header,
@@ -74,6 +73,7 @@ export default class Api {
     
     
       deleteCard(cardId) {
+        console.log(cardId)
         return fetch(`${this._url}/cards/${cardId}`, {
           method: 'DELETE',
           headers: this._header,

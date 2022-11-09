@@ -59,7 +59,7 @@ function createCard(dataObj) {
       popupWithImage.open(dataObj)
     },
 
-    handleAddLike: () => {
+    handleAddLike: (dataObj) => {
       api.addLikeCard(dataObj._id)
       .then(dataObj => {
         card.setLikeInfo(dataObj.likes);
@@ -99,10 +99,10 @@ buttonAdd.addEventListener('click', () => {
 
 const popupAddForm = new PopupWithForm({
   popupSelector: '.popup-add',
-  handleFormSubmit: (cardData)  => {
-    return api.createCard(cardData.name, cardData.link)
+  handleFormSubmit: (card)  => {
+    return api.createCard(card.name, card.link)
     .then(formData => {
-      section.addItemNew(createCard(formData));
+      section.addItem(createCard(formData));
     })
     .catch((err) => {
       console.log('Ошибка при добавлении новой карточки', err);
