@@ -6,7 +6,6 @@ import PopupWithConfirm from '../components/PopupWithConfirm.js';
 import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
 import Api from '../components/Api.js';
-//import { initialCards } from "../utils/constants";
 
 import {
   validationConfig,
@@ -18,6 +17,8 @@ import {
 import './index.css';
 
 let userId;
+let cardDelete;
+
 
 const api = new Api({
   url: 'https://mesto.nomoreparties.co/v1/cohort-52',
@@ -27,23 +28,16 @@ const api = new Api({
     },
 })
 
+//api.deleteCard()
+api.addLikeCard()
+api.removeLikeCard()
 //Экземпляр класса Section
 const section = new Section({
   renderer: (dataObj) => {
     section.addItem(createCard(dataObj));
   }},
   '.elements'
-);
-
-api.getInitialCards().then( data => {
-  section.renderItems(data)
-})
-
-api.getUserInfo().then( data => {
-  userInfo.setUserInfo(data);
-    userInfo.setUserId(data.avatar);
-    userId = data._id
-})
+)
 
 //Создаём массив с промисами
 const arrayPromises = [api.getUserInfo(), api.getInitialCards()];
@@ -83,9 +77,9 @@ function createCard(dataObj) {
         console.log('Ошибка при удалении Like карточки', err);
     });},
 
-    handleTrashClick: () => {
+    handleDeleteButoonClick: () => {
       popupConfirmForm.open(dataObj);
-      cardForDelete = card
+      cardDelete = card
     }
   },
   userId
@@ -108,7 +102,7 @@ const popupAddForm = new PopupWithForm({
   handleFormSubmit: (cardData)  => {
     return api.createCard(cardData.name, cardData.link)
     .then(formData => {
-      cardsList.addItem(createNewCard(formData));
+      section.addItemNew(createCard(formData));
     })
     .catch((err) => {
       console.log('Ошибка при добавлении новой карточки', err);
@@ -120,7 +114,7 @@ popupAddForm.setEventListeners();
 
 const userInfo = new UserInfo({
   nameSelector: '.profile__name',
-  jobSelector: '.profile__job',
+  jobSelector: '.profile__about',
   avatarSelector: '.profile__avatar',
 });
 
@@ -154,7 +148,6 @@ avatarEdit.addEventListener('click', () => {
 });
 
 //экземпляр формы редактирования аватара
- 
 const popupAvatarForm = new PopupWithForm({
   popupSelector: '.popup-avatar',
   handleFormSubmit: (userData)  => {
@@ -171,12 +164,11 @@ popupAvatarForm.setEventListeners();
 
 //экземпляр формы подтверждения удаления карточки
 const popupConfirmForm = new PopupWithConfirm({
-  popupSelector: '.popup-confirmation',
+  popupSelector: '.popup-confirm',
   handleFormSubmit: (cardId)  => {
-    console.log(cardId);
     return api.deleteCard(cardId)
     .then(() => {
-      cardForDelete.handleDeleteCard();
+      cardDelete.handleDeleteCard();
     })
     .catch((err) => {
       console.log('Ошибка при подтверждении удаления карточки', err);

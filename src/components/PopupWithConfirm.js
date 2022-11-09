@@ -10,25 +10,23 @@ export default class PopupWithConfirm extends Popup {
     this._initialText = this._buttonPopup.textContent;
   }
 
-  openPopup(objectCard) {
-    this._cardId = objectCard._id;
+  open(dataObj) {
+    this._cardId = dataObj._id;
     super.open()
   }
 
-  getIdCard() {
+  _getCardId() {
     return this._cardId
   }
-
-  /**
-   * публичный метод добавляет обработчик клика иконке закрытия и добавлять обработчик сабмита формы.
-   */
+  
+   //метод добавляет обработчик клика иконке закрытия и добавляет обработчик сабмита формы.
   setEventListeners() {
     super.setEventListeners();
 
     this._formPopup.addEventListener('submit', (evt) => {
       evt.preventDefault();
-      this._buttonPopup.textContent = 'Сохранение...';// меняем его, чтобы показать пользователю ожидание
-      this._handleFormSubmit(this._getIdCard())
+      this._buttonPopup.textContent = 'Сохранение...';
+      this._handleFormSubmit(this._getCardId())
         .then(() => {
           this.close();
         })
@@ -38,9 +36,6 @@ export default class PopupWithConfirm extends Popup {
     });
   }
 
-  /**
-   * метод для закрытия попапа и сброса форма.
-   */
   close() {
     this._formPopup.reset();
     super.close()

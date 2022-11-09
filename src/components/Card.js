@@ -1,12 +1,12 @@
 export default class Card {
-    constructor(dataObj, cardSelector, {handleCardClick, handleAddLike, handleRemoveLike, andleBackClick}, userId) {
+    constructor(dataObj, cardSelector, {handleCardClick, handleAddLike, handleRemoveLike, handleDeleteButoonClick}, userId) {
         this._name = dataObj.name;
         this._link = dataObj.link;
         this._cardSelector = cardSelector;
         this._handleCardClick = handleCardClick;
         this._handleAddLike = handleAddLike;
         this._handleRemoveLike = handleRemoveLike;
-        this._handleBackClick = andleBackClick;
+        this._handleDeleteButoonClick = handleDeleteButoonClick;
         this._userId = userId;
         this._likeArray = dataObj.likes;
         this._owner = dataObj.owner
@@ -22,7 +22,7 @@ export default class Card {
         return newCard;
     }
 
-    _handleDeleteCard() {
+    handleDeleteCard() {
         this._element.remove();
         this._element = null;
     }
@@ -38,6 +38,7 @@ export default class Card {
     _setStateLike(array) {
         if (array.find(item => item._id === this._userId)) {
           this._likeButton.classList.add('element__like_active');
+          console.log(this._likeButton)
         } else {
           this._likeButton.classList.remove('element__like_active');
         }
@@ -51,7 +52,7 @@ export default class Card {
     _setEventListeners() {
         this._deleteButton
             .addEventListener('click', () => {
-                this._handleDeleteCard();
+                this._handleDeleteButoonClick();
             });
 
         this._likeButton
@@ -78,6 +79,7 @@ export default class Card {
         this._cardName = this._element.querySelector('.element__title');
         this._likeButton = this._element.querySelector('.element__like');
         this._deleteButton = this._element.querySelector('.element__back');
+        this._likeCount = this._element.querySelector('.element__like-count');
 
         this._cardName.textContent = this._name;
         this._cardImage.src = this._link;
