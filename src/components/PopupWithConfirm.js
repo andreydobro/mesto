@@ -11,7 +11,7 @@ export default class PopupWithConfirm extends Popup {
   }
 
   open(cardId) {
-    //this._cardId = cardId;
+    this._cardId = cardId;
     super.open()
   }
   
@@ -21,7 +21,7 @@ export default class PopupWithConfirm extends Popup {
 
     this._formPopup.addEventListener('submit', (evt) => {
       evt.preventDefault();
-      this._handleFormSubmit()
+      this._handleFormSubmit(this._cardId)
     });
   }
 
