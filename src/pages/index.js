@@ -100,6 +100,7 @@ buttonAdd.addEventListener('click', () => {
 const popupAddForm = new PopupWithForm({
   popupSelector: '.popup-add',
   handleFormSubmit: (card) => {
+    popupAddForm.renderLoading(true);
     api.createCard(card.name, card.link)
       .then(formData => {
         section.addItem(createCard(formData));
@@ -107,6 +108,9 @@ const popupAddForm = new PopupWithForm({
       })
       .catch((err) => {
         console.log('Ошибка при добавлении новой карточки', err);
+      })
+      .finally(() => {
+        popupAddForm.renderLoading(false);
       })
   }
 });
@@ -121,12 +125,16 @@ const userInfo = new UserInfo({
 const popupEditForm = new PopupWithForm({
   popupSelector: '.popup-edit',
   handleFormSubmit: (user) => {
+    popupEditForm.renderLoading(true)
     api.editUserInfo(user.name, user.about)
       .then((formData) => {
         userInfo.setUserInfo(formData);
         popupEditForm.close()
       }).catch((err) => {
         console.log('Ошибка при редактировании профиля', err);
+      })
+      .finally(() => {
+        popupEditForm.renderLoading(false);
       })
   },
 });
@@ -151,13 +159,17 @@ avatarEdit.addEventListener('click', () => {
 const popupAvatarForm = new PopupWithForm({
   popupSelector: '.popup-avatar',
   handleFormSubmit: (userData) => {
-    return api.editUserAvatar(userData.avatar)
+    popupAvatarForm.renderLoading(true)
+    api.editUserAvatar(userData.avatar)
       .then(formData => {
         userInfo.setUserAvatar(formData);
         popupAvatarForm.close
       })
       .catch((err) => {
         console.log('Ошибка при редактировании аватара', err);
+      })
+      .finally(() => {
+        popupAvatarForm.renderLoading(false);
       })
   },
 });
@@ -167,6 +179,7 @@ popupAvatarForm.setEventListeners();
 const popupConfirmForm = new PopupWithConfirm({
   popupSelector: '.popup-confirm',
   handleFormSubmit: (cardId) => {
+    popupConfirmForm.renderLoading(true)
     api.deleteCard(cardId)
       .then(() => {
         cardDelete.handleDeleteCard();
@@ -174,6 +187,9 @@ const popupConfirmForm = new PopupWithConfirm({
       })
       .catch((err) => {
         console.log('Ошибка при подтверждении удаления карточки', err);
+      })
+      .finally(() => {
+        popupConfirmForm.renderLoading(false);
       })
   },
 });
