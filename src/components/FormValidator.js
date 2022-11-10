@@ -1,18 +1,14 @@
 export default class FormValidator {
   
   constructor(valid, formElement) {
-    this._formSelector = valid.formSelector;
     this._inputSelector = valid.inputSelector;
     this._submitButtonSelector = valid.submitButtonSelector;
-    this._popupErrorSelector = valid.popupErrorSelector;
     this._inactiveButtonClass = valid.inactiveButtonClass;
     this._inputErrorClass = valid.inputErrorClass;
     this._errorClass = valid.errorClass;
     this._formElement = formElement;
     this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);
     this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
-   // this._popupErrors = Array.from(this._formElement.querySelectorAll(this._popupErrorSelector));
-   // this._popupInputs = this._formElement.querySelectorAll(this._inputSelector);
   }
 
   _showInputError(inputElement) {
@@ -55,18 +51,12 @@ export default class FormValidator {
 
   _toggleButtonState() {
     if (this._hasInvalidInput()) {
+
       this._addDisabledButton()
     } else {
       this._removeDisabledButton()
     }
   }
-
-  resetErrorPopupInput() {
-    this._inputList.forEach((inputElement) => {
-      this._hideInputError(inputElement);
-    });
-    this._toggleButtonState();
-  };
 
   enableValidation() {
     this._toggleButtonState();

@@ -11,6 +11,7 @@ export default class Card {
         this._likeArray = dataObj.likes;
         this._owner = dataObj.owner
         this._likes = dataObj.likes;
+        this._cardId = dataObj._id;
     }
 
     _getTemplate() {
@@ -51,7 +52,7 @@ export default class Card {
     _setEventListeners() {
         this._deleteButton
             .addEventListener('click', () => {
-                this._handleDeleteButoonClick();
+                this._handleDeleteButoonClick(this._cardId);
             });
 
         this._likeButton

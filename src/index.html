@@ -42,12 +42,12 @@
             <form class="popup__form" novalidate>
                 <label class="popup__label">
                     <input id="nameuser" class="popup__input_name_edit popup__input" value="" name="name"
-                        type="text" minlength="2" maxlength="40" required>
+                        type="text" minlength="2" maxlength="40" required placeholder="Имя">
                     <span id="nameuser-error" class="popup__error"></span>
                 </label>
                 <label class="popup__label">
                     <input id="aboutuser" class="popup__input_about_edit popup__input" value="" name="about" type="text"
-                        minlength="2" maxlength="200" required>
+                        minlength="2" maxlength="200" required placeholder="О себе">
                     <span id="aboutuser-error" class="popup__error"></span>
                 </label>
                 <button class="popup__button-save" type="submit">Сохранить</button>
@@ -69,7 +69,7 @@
                         placeholder="Ссылка на картинку" required>
                     <span id="url-error" class="popup__error">Заполните поле</span>
                 </label>
-                <button class="popup__button-save popup__button-save_add" type="submit">Создать</button>
+                <button class="popup__button-save popup__button-save_add" type="submit" disabled="disabled">Создать</button>
             </form>
         </div>
     </section>
@@ -87,7 +87,7 @@
             <form class="popup__form popup__form-add" novalidate>
                 <label class="popup__label">
                     <input id="avatar" class="popup__input_name_add popup__input popup__input_name_edit popup__input_avatar" value=""
-                        name="avatar" type="text" placeholder="Ссылка на картинку" required>
+                        name="avatar" type="url" placeholder="Ссылка на картинку" required>
                     <span id="avatar-error" class="popup__error">Заполните поле</span>
                 </label>
                 <button class="popup__button-save popup__button-save_add" type="submit">Создать</button>

@@ -22,17 +22,18 @@ let cardDelete;
 
 const api = new Api({
   url: 'https://mesto.nomoreparties.co/v1/cohort-52',
-    headers: {
-      authorization: 'df12ed01-f693-4b5e-b6fe-aa462d0d5b58',
-      'Content-Type': 'application/json'
-    },
+  headers: {
+    authorization: 'df12ed01-f693-4b5e-b6fe-aa462d0d5b58',
+    'Content-Type': 'application/json'
+  },
 })
 
 //Экземпляр класса Section
 const section = new Section({
   renderer: (dataObj) => {
     section.addItem(createCard(dataObj));
-  }},
+  }
+},
   '.elements'
 )
 
@@ -49,7 +50,7 @@ Promise.all(arrayPromises)
     console.log(`Ошибка: ${err}`)
   });
 
- //функция создания карточки
+//функция создания карточки
 function createCard(dataObj) {
   const card = new Card(dataObj, '.template', {
     handleCardClick: () => {
@@ -58,28 +59,30 @@ function createCard(dataObj) {
 
     handleAddLike: () => {
       api.addLikeCard(dataObj._id)
-      .then(dataObj => {
-        card.setLikeInfo(dataObj.likes);
-      })
-      .catch((err) => {
-        console.log('Ошибка при добавлении Like карточки', err);
-    });},
+        .then(dataObj => {
+          card.setLikeInfo(dataObj.likes);
+        })
+        .catch((err) => {
+          console.log('Ошибка при добавлении Like карточки', err);
+        });
+    },
 
     handleRemoveLike: () => {
       api.removeLikeCard(dataObj._id)
-      .then(dataObj => {
-        card.setLikeInfo(dataObj.likes);
-      })
-      .catch((err) => {
-        console.log('Ошибка при удалении Like карточки', err);
-    });},
+        .then(dataObj => {
+          card.setLikeInfo(dataObj.likes);
+        })
+        .catch((err) => {
+          console.log('Ошибка при удалении Like карточки', err);
+        });
+    },
 
-    handleDeleteButoonClick: () => {
-      popupConfirmForm.open(dataObj);
+    handleDeleteButoonClick: (cardId) => {
+      popupConfirmForm.open(cardId);
       cardDelete = card
     }
   },
-  userId
+    userId
   );
   const newCard = card.createCard();
   return newCard;
@@ -91,23 +94,23 @@ popupWithImage.setEventListeners();
 buttonAdd.addEventListener('click', () => {
   popupAddForm.open();
   const formAdd = popupAddForm.getFormPopup();
-  formValidators[ formAdd.getAttribute('name') ].resetValidation()
+  formValidators[formAdd.getAttribute('name')].resetValidation()
 });
 
 const popupAddForm = new PopupWithForm({
   popupSelector: '.popup-add',
-  handleFormSubmit: (card)  => {
-    return api.createCard(card.name, card.link)
-    .then(formData => {
-      section.addItem(createCard(formData));
-    })
-    .catch((err) => {
-      console.log('Ошибка при добавлении новой карточки', err);
-    })
+  handleFormSubmit: (card) => {
+    api.createCard(card.name, card.link)
+      .then(formData => {
+        section.addItem(createCard(formData));
+        popupAddForm.close()
+      })
+      .catch((err) => {
+        console.log('Ошибка при добавлении новой карточки', err);
+      })
   }
 });
 popupAddForm.setEventListeners();
-
 
 const userInfo = new UserInfo({
   nameSelector: '.profile__name',
@@ -117,15 +120,16 @@ const userInfo = new UserInfo({
 
 const popupEditForm = new PopupWithForm({
   popupSelector: '.popup-edit',
-  handleFormSubmit: (user)  => {
-    return api.editUserInfo(user.name, user.about)
-    .then((formData) => {
-      userInfo.setUserInfo(formData);
-    }).catch((err) => {
-      console.log('Ошибка при редактировании профиля', err);
-    })
-    },
-  });
+  handleFormSubmit: (user) => {
+    api.editUserInfo(user.name, user.about)
+      .then((formData) => {
+        userInfo.setUserInfo(formData);
+        popupEditForm.close()
+      }).catch((err) => {
+        console.log('Ошибка при редактировании профиля', err);
+      })
+  },
+});
 popupEditForm.setEventListeners();
 
 buttonEdit.addEventListener('click', () => {
@@ -133,27 +137,28 @@ buttonEdit.addEventListener('click', () => {
   const formEdit = popupEditForm.getFormPopup();
   const objectProfile = userInfo.getUserInfo();
   popupEditForm.setInputValues(objectProfile);
-  formValidators[ formEdit.getAttribute('name') ].resetValidation()
+  formValidators[formEdit.getAttribute('name')].resetValidation()
 });
 
 //Открытие попапа с формой редактирования аватара
 avatarEdit.addEventListener('click', () => {
   popupAvatarForm.open();
   const formAvatar = popupAvatarForm.getFormPopup();
-  formValidators[ formAvatar.getAttribute('name') ].resetValidation()
+  formValidators[formAvatar.getAttribute('name')].resetValidation()
 });
 
 //экземпляр формы редактирования аватара
 const popupAvatarForm = new PopupWithForm({
   popupSelector: '.popup-avatar',
-  handleFormSubmit: (userData)  => {
+  handleFormSubmit: (userData) => {
     return api.editUserAvatar(userData.avatar)
-    .then(formData => {
-      userInfo.setUserAvatar(formData);
-    })
-    .catch((err) => {
-      console.log('Ошибка при редактировании аватара', err);
-    })
+      .then(formData => {
+        userInfo.setUserAvatar(formData);
+        popupAvatarForm.close
+      })
+      .catch((err) => {
+        console.log('Ошибка при редактировании аватара', err);
+      })
   },
 });
 popupAvatarForm.setEventListeners();
@@ -161,14 +166,15 @@ popupAvatarForm.setEventListeners();
 //экземпляр формы подтверждения удаления карточки
 const popupConfirmForm = new PopupWithConfirm({
   popupSelector: '.popup-confirm',
-  handleFormSubmit: (cardId)  => {
-    return api.deleteCard(cardId)
-    .then(() => {
-      cardDelete.handleDeleteCard();
-    })
-    .catch((err) => {
-      console.log('Ошибка при подтверждении удаления карточки', err);
-    })
+  handleFormSubmit: (cardId) => {
+    api.deleteCard(cardId)
+      .then(() => {
+        cardDelete.handleDeleteCard();
+        popupConfirmForm.close()
+      })
+      .catch((err) => {
+        console.log('Ошибка при подтверждении удаления карточки', err);
+      })
   },
 });
 popupConfirmForm.setEventListeners();
