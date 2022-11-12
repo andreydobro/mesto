@@ -42,11 +42,6 @@ export default class Card {
         } else {
           this._likeButton.classList.remove('element__like_active');
         }
-      }
-
-    _handleLikeCard() {
-        this._likeButton
-            .classList.toggle('element__like_active');
     }
 
     _setEventListeners() {

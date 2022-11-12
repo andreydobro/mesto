@@ -10,8 +10,8 @@ export default class PopupWithConfirm extends Popup {
     this._initialText = this._buttonPopup.textContent;
   }
 
-  open(cardId) {
-    this._cardId = cardId;
+  open(data) {
+    this._data = data;
     super.open()
   }
   
@@ -21,7 +21,7 @@ export default class PopupWithConfirm extends Popup {
 
     this._formPopup.addEventListener('submit', (evt) => {
       evt.preventDefault();
-      this._handleFormSubmit(this._cardId)
+      this._handleFormSubmit(this._data)
     });
   }
 
@@ -39,3 +39,28 @@ export default class PopupWithConfirm extends Popup {
     super.close()
   }
 }
+
+/*export default class PopupWithConfirm extends Popup {
+  constructor(popupSelector, { handleDeleteButoonClick }) {
+    super(popupSelector);
+    this._buttonPopup = this._popup.querySelector('.popup__button-save');
+    this._handleFormSubmit = handleFormSubmit;
+    this._handleDeleteButoonClick =  handleDeleteButoonClick;
+  }
+    open() {
+      super.open();
+    }
+  
+    close() {
+      super.close();
+    }
+  
+    _handlerCallBack() {
+      this._handleDeleteButoonClick(this._data);
+    }
+  
+    setEventListeners() {
+      super.setEventListeners();
+      this._buttonPopup.addEventListener('click', this._handlerCallBack);
+    }
+  }*/

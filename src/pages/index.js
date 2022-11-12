@@ -163,7 +163,7 @@ const popupAvatarForm = new PopupWithForm({
     api.editUserAvatar(userData.avatar)
       .then(formData => {
         userInfo.setUserAvatar(formData);
-        popupAvatarForm.close
+        popupAvatarForm.close()
       })
       .catch((err) => {
         console.log('Ошибка при редактировании аватара', err);
@@ -178,9 +178,9 @@ popupAvatarForm.setEventListeners();
 //экземпляр формы подтверждения удаления карточки
 const popupConfirmForm = new PopupWithConfirm({
   popupSelector: '.popup-confirm',
-  handleFormSubmit: (cardId) => {
+  handleFormSubmit: (data) => {
     popupConfirmForm.renderLoading(true)
-    api.deleteCard(cardId)
+    api.deleteCard(data)
       .then(() => {
         cardDelete.handleDeleteCard();
         popupConfirmForm.close()
